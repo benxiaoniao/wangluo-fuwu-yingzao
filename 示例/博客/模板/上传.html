@@ -1,0 +1,19 @@
+{% 继承 "基础.html" %}
+{% 块 标题 %}上传 · 我的博客{% 结束块 %}
+{% 块 内容 %}
+<h2>上传文件</h2>
+<p class="弱">文本类文件直接上传；图片在前端转 base64 上传并即时预览。</p>
+
+<h3>文本文件</h3>
+<form method="post" action="/上传" enctype="multipart/form-data">
+<div class="字段"><label>选择文件</label><input type="file" name="文件"></div>
+<button type="submit">上传</button>
+</form>
+
+<h3>图片（base64 上传 + 预览）</h3>
+<div class="字段"><label>选择图片</label><input type="file" id="图片" accept="image/*"></div>
+<div id="图片预览"></div>
+
+{% 如果 结果 %}<div class="tip">{{ 结果|安全 }}</div>{% 结束如果 %}
+<script src="/静态/上传.js"></script>
+{% 结束块 %}

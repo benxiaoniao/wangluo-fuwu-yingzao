@@ -1,0 +1,28 @@
+:root{--主:#2563eb;--字:#1f2328;--弱:#6b7280;--线:#e5e7eb;--底:#f7f8fa;--卡片:#fff}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.7 system-ui,-apple-system,"Segoe UI","Noto Sans SC",sans-serif;color:var(--字);background:var(--底)}
+header.顶栏{background:var(--卡片);border-bottom:1px solid var(--线);padding:1rem 1.5rem}
+header.顶栏 .内{max-width:52rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+header.顶栏 h1{margin:0;font-size:1.25rem}
+nav a{margin-left:1rem;color:var(--主);text-decoration:none}
+nav a:hover{text-decoration:underline}
+main{max-width:52rem;margin:0 auto;padding:1.5rem}
+.文章列表{list-style:none;padding:0;margin:0}
+.文章列表 li{padding:1rem 1.25rem;background:var(--卡片);border:1px solid var(--线);border-radius:.5rem;margin-bottom:.75rem;display:flex;justify-content:space-between;gap:1rem}
+.文章列表 a{color:var(--字);text-decoration:none;font-weight:600;font-size:1.05rem}
+.文章列表 a:hover{color:var(--主)}
+.文章列表 .浏览{color:var(--弱);font-size:.85rem;white-space:nowrap}
+.弱{color:var(--弱)}
+.meta{color:var(--弱);font-size:.875rem;margin-bottom:1.5rem}
+.正文{white-space:pre-wrap;line-height:1.8}
+.搜索条{display:flex;gap:.5rem;margin-bottom:1rem}
+.搜索条 input{flex:1;padding:.6rem .8rem;border:1px solid var(--线);border-radius:.375rem;font:inherit}
+button{padding:.55rem 1.1rem;border:0;border-radius:.375rem;background:var(--主);color:#fff;font:inherit;cursor:pointer}
+button:hover{opacity:.9}
+.字段{margin-bottom:1rem}
+.字段 label{display:block;font-size:.9rem;color:var(--弱);margin-bottom:.35rem}
+.字段 input,.字段 textarea,.字段 select{width:100%;padding:.6rem .8rem;border:1px solid var(--线);border-radius:.375rem;font:inherit;background:#fff}
+.字段 textarea{resize:vertical}
+.表单提示{display:block;color:var(--弱);font-size:.8rem;margin-top:.3rem}
+.表单错误{color:#dc2626;font-size:.85rem;margin-top:.3rem}
+.tip{padding:.75rem 1rem;border-radius:.375rem;border-left:4px solid var(--主);background:#eff6ff;margin-bottom:1rem}

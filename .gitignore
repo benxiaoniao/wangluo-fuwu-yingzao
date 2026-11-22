@@ -1,0 +1,21 @@
+# 运行时产物
+*.db
+*.db.log
+*.db.lock
+*.lock
+*.pyc
+__pycache__/
+
+# 本地包 junction（换机器用 建立junction.bat 重建，不进版本库）
+.jishi/
+
+# 系统
+Thumbs.db
+.DS_Store
+
+# 上传目录（运行时产物，不进版本库）
+示例/博客/静态/上传/
+
+# 前端运行时（大文件，与 jishi 版本绑定；由 准备环境.bat 从本机 jishi 安装拷贝）
+示例/博客/静态/前端/jishi-wasm.js
+示例/博客/静态/前端/jishi_wasm.wasm
