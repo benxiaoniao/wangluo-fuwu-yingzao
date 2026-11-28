@@ -14,16 +14,14 @@
 函数 前端_设运行时目录(目录):
     前端_配置["运行时目录"] = 目录
 
-# 处理 /网络服务营造/ 下的运行时请求
+# 处理 /网络服务营造/ 下的运行时请求（js/wasm 走 文件响应，带 ETag/304）
 函数 前端_处理(配置, req):
     令 网址 = req.路径
     如果 网址 == "/网络服务营造/jishi-wasm.js":
-        令 js = 文件.读文本(路径.连接(前端_配置["运行时目录"], "jishi-wasm.js"))
-        返回 响应(js, 200, "application/javascript; charset=utf-8").输出()
+        返回 文件响应(路径.连接(前端_配置["运行时目录"], "jishi-wasm.js"), "application/javascript; charset=utf-8", req).输出()
     如果 网址 == "/网络服务营造/jishi_wasm.wasm":
-        令 b = 文件.读字节(路径.连接(前端_配置["运行时目录"], "jishi_wasm.wasm"))
         # 字节正文走 构造响应 的字节通道（响应对象.输出 自动分流），字节原样到浏览器
-        返回 响应(b, 200, "application/wasm").输出()
+        返回 文件响应(路径.连接(前端_配置["运行时目录"], "jishi_wasm.wasm"), "application/wasm", req).输出()
     如果 网址 == "/网络服务营造/jishi_wasm.wasm.b64":
         # 旧端点：base64 文本（0.3.5 兼容；引导脚本已改走上面的二进制端点）
         令 b2 = 文件.读字节(路径.连接(前端_配置["运行时目录"], "jishi_wasm.wasm"))

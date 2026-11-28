@@ -97,6 +97,15 @@
 函数 字节响应(字节, 内容类型 = "application/octet-stream", 状态 = 200):
     返回 新建 响应对象(字节, 状态, 内容类型)
 
+# 按文件造响应（内联伺服，自动 ETag/304）：命中 If-None-Match 回 304，
+# 否则字节读入直出并带 ETag + Cache-Control: no-cache（开发服务器语义：每次协商缓存）
+函数 文件响应(文件路径, 内容类型, 请求):
+    令 etag = "\"" + 内建_文本(路径.大小(文件路径)) + "-" + 路径.修改时间(文件路径) + "\""
+    令 客户etag = 请求.头("if-none-match", "")
+    如果 客户etag != "" 与 客户etag == etag:
+        返回 响应("", 304).设头("ETag", etag).设头("Cache-Control", "no-cache")
+    返回 字节响应(文件.读字节(文件路径), 内容类型).设头("ETag", etag).设头("Cache-Control", "no-cache")
+
 # 重定向
 函数 重定向(地址, 状态 = 302):
     令 r = 新建 响应对象("", 状态, "text/html; charset=utf-8")
